@@ -1,9 +1,25 @@
+
 module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
 <<<<<<< HEAD
+<<<<<<< HEAD
   });
 =======
+=======
+    imagemin: {
+      dynamic: {
+        files: [
+          {
+            expand: true,
+            cwd: "./src/img",
+            src: ["**/*.{png, jpg}"],
+            dest: "./dev/img/",
+          },
+        ],
+      },
+    },
+>>>>>>> exercicio-grunt
     less: {
       development: {
         files: {
@@ -25,9 +41,9 @@ module.exports = function (grunt) {
         tasks: ["less:development"],
       },
       html: {
-        files: ['src/index.html'] , 
-        tasks: ['replace:dev'] 
-      }
+        files: ["src/index.html"],
+        tasks: ["replace:dev"],
+      },
     },
     replace: {
       dev: {
@@ -36,6 +52,10 @@ module.exports = function (grunt) {
             {
               match: "ENDERECO_DO_CSS",
               replacement: "./styles/main.css",
+            },
+            {
+              match: "ENDERECO_DO_JS",
+              replacement: "../src/scripts/scripts.js",
             },
           ],
         },
@@ -86,24 +106,25 @@ module.exports = function (grunt) {
     uglify: {
       target: {
         files: {
-          'dist/scripts/scripts.min.js' : 'src/scripts/scripts.js'
-        }
-      }
-    }
+          "dist/scripts/scripts.min.js": "src/scripts/scripts.js",
+        },
+      },
+    },
   });
+  grunt.loadNpmTasks("grunt-contrib-imagemin");
   grunt.loadNpmTasks("grunt-contrib-less");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-replace");
   grunt.loadNpmTasks("grunt-contrib-htmlmin");
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-uglify");
-  grunt.registerTask("default", ["watch"]);
+  grunt.registerTask("default", ["imagemin", "watch"]);
   grunt.registerTask("build", [
     "less:production",
     "htmlmin:dist",
     "replace:dist",
     "clean",
-    "uglify"
+    "uglify",
   ]);
 >>>>>>> 8a5b4a35bebf6f5dd51497380ab4a716a1db5a53
 };
