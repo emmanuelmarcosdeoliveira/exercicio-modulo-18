@@ -1,0 +1,200 @@
+@import "reset.less";
+@import "mixim.less";
+@import "mapas.less";
+@breakpointMobile: ~"(max-width:767px)";
+@breakpointTablet: ~"(max-width: 1023px)";
+
+body {
+  background-color: #fff;
+  font-family: #fontes[font1];
+}
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+@media @breakpointTablet {
+  .container {
+    max-width: 80%;
+  }
+}
+@media @breakpointMobile {
+  .container {
+    max-width: 90%;
+    margin: 0px auto;
+  }
+}
+
+header {
+  background-color: #colors[cor3];
+}
+
+header .container {
+  background-color: #colors[cor3];
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  h1 {
+    .Titulo();
+    color: #colors[cor1];
+  }
+  ul {
+    display: flex;
+  }
+  li {
+    padding: 10px;
+  }
+  nav ul li a {
+    color: #colors[cor1];
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px;
+  }
+  nav ul li a:hover {
+    background-color: #colors[cor2];
+    color: #colors[cor3];
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+
+#about .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  .store-front {
+    margin: 60px 0;
+    margin-left: 10px;
+    border-radius: 10px;
+  }
+  h2 {
+    .Titulo();
+    margin: 60px 20px 0px;
+    color: #colors[cor3];
+  }
+  p {
+    .FonteTexto();
+    padding: 20px 20px;
+  }
+}
+
+.brands-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  & img {
+    width: 90px;
+    box-shadow: none;
+  }
+  & img:nth-child(odd) {
+    margin: 0 20px;
+  }
+}
+.social-links {
+  display: flex;
+  & img {
+    height: 50px;
+    margin: 5px;
+  }
+}
+
+#contact h2 {
+  .Titulo();
+  padding-bottom: 20px;
+}
+
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  & h3 {
+    .SubTitulo();
+    padding-bottom: 20px;
+  }
+  & form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 20px;
+    border: 2px solid #colors[cor3];
+    border-radius: 5px;
+    background-color: rgba(237, 237, 241, 0.904);
+    & input,
+    textarea,
+    button {
+      margin: 10px 20px;
+      padding: 15px;
+      .FonteTexto( );
+    }
+  }
+  & button {
+    .Botao();
+  }
+}
+footer {
+  background-color: #colors[ cor3];
+  padding: 30px;
+  & p {
+    .FonteTexto();
+    text-align: center;
+    color: #colors[cor1];
+  }
+  & .subir {
+    padding: 20px;
+    cursor: pointer;
+  }
+}
+
+@media @breakpointTablet {
+  #about .container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .contact-methods {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+@media @breakpointMobile {
+  #about .container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .container {
+    margin: 0 auto;
+  }
+  .contact-methods {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .container .store-front {
+    width: 360px;
+  }
+  #about .container h2 {
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+  }
+  #about .container p {
+    width: 375px;
+    padding: 10px;
+    font-size: 1rem;
+    margin: 0px;
+  }
+  .container h1,
+  h2,
+  h3 {
+    text-align: center;
+    margin: 0px;
+  }
+  header .container {
+    justify-content: center;
+    padding: 20px;
+  }
+  .brands-list img {
+    width: 80px;
+    padding: 0px;
+  }
+}
